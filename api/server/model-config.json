@@ -1,0 +1,201 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Item": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Currency": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Category": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Page": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Author": {
+    "dataSource": "alexventure",
+    "public": true
+  },
+  "Coupon": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ItemCoupon": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Property": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "PropertyType": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "PropertyValue": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ItemProperty": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "MerchantGateway": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Notify": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Order": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Status": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderStatus": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderCoupon": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderItem": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "PackageLevel": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Service": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ServiceCoupon": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ServicePackageLevel": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderService": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Subscription": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "SubscriptionCoupon": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "SubscriptionPackageLevel": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "SubscriptionService": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderSubscription": {
+    "dataSource": "alexventure",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  }
+}

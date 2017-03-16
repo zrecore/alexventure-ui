@@ -35,3 +35,11 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Vagrant stuff
+acceptance_config.yml
+boxes/*
+/.vagrant
+/website/.vagrant
+/website/build
+/vagrant-spec.config.rb
