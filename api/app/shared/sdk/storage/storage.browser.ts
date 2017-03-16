@@ -1,16 +1,15 @@
 /* tslint:disable */
-import * as AppSettings from 'application-settings';
 import { Injectable } from '@angular/core';
 /**
 * @author Jonathan Casarrubias <twitter:@johncasarrubias> <github:@mean-expert-official>
-* @module StorageNative
+* @module StorageBrowser
 * @license MIT
 * @description
 * This module handle localStorage, it will be provided using DI Swapping according the
 * SDK Socket Driver Available currently supporting Angular 2 for web and NativeScript 2.
 **/
 @Injectable()
-export class StorageNative {
+export class StorageBrowser {
   /**
    * @method get
    * @param {string} key Storage key name
@@ -19,7 +18,7 @@ export class StorageNative {
    * The getter will return any type of data persisted in localStorage.
    **/
   get(key: string): any {
-    let data: string = AppSettings.getString(key);
+    let data: string = localStorage.getItem(key);
     return this.parse(data);
   }
   /**
@@ -31,9 +30,9 @@ export class StorageNative {
    * The setter will return any type of data persisted in localStorage.
    **/
   set(key: string, value: any): void {
-    AppSettings.setString(
+    localStorage.setItem(
       key,
-      String(typeof value === 'object' ? JSON.stringify(value) : value)
+      typeof value === 'object' ? JSON.stringify(value) : value
     );
   }
   /**
@@ -43,9 +42,9 @@ export class StorageNative {
    * @description
    * This method will remove a localStorage item from the client.
    **/
-  remove(key: string): any {
-    if (AppSettings.hasKey(key)) {
-      AppSettings.remove(key);
+  remove(key: string): void {
+    if (localStorage[key]) {
+      localStorage.removeItem(key);
     } else {
       console.log('Trying to remove unexisting key: ', key);
     }

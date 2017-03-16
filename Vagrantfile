@@ -77,11 +77,8 @@ Vagrant.configure("2") do |config|
     cd /home/ubuntu
     curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
     bash nodesource_setup.sh
-    apt-get install -y nodejs build-essential python2.7 mongodb-org android-sdk
-    npm config set python
     chown -R ubuntu:ubuntu /usr/local
-    npm config set prefix /usr/local
-    npm install -g loopback-cli
+    apt-get install -y nodejs build-essential python2.7 mongodb-org
     echo "[Unit]
 Description=High-performance, schema-free document-oriented database
 After=network.target
@@ -95,4 +92,13 @@ WantedBy=multi-user.target" | tee /etc/systemd/system/mongodb.service
      sudo systemctl start mongodb
      sudo systemctl enable mongodb
   SHELL
+
+
+  $setup_script = <<-SCRIPT
+    npm config set python /usr/bin/python2.7
+    npm config set prefix /usr/local
+    npm install -g strongloop loopback-cli
+  SCRIPT
+
+  config.vm.provision "shell", inline: $setup_script, privileged: false
 end

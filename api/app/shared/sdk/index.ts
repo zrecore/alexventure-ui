@@ -42,8 +42,9 @@ import { InternalStorage, SDKStorage } from './storage/storage.swaps';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { StorageNative } from './storage/storage.native';
-import { SocketNative } from './sockets/socket.native';
+import { CookieBrowser } from './storage/cookie.browser';
+import { StorageBrowser } from './storage/storage.browser';
+import { SocketBrowser } from './sockets/socket.browser';
 import { SocketDriver } from './sockets/socket.driver';
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
@@ -77,9 +78,13 @@ import { SubscriptionPackageLevelApi } from './services/custom/SubscriptionPacka
 import { SubscriptionServiceApi } from './services/custom/SubscriptionService';
 import { OrderSubscriptionApi } from './services/custom/OrderSubscription';
 /**
-* @module SDKNativeModule
+* @module SDKBrowserModule
 * @description
-* This module should be imported when building a NativeScript Applications.
+* This module should be imported when building a Web Application in the following scenarios:
+*
+*  1.- Regular web application
+*  2.- Angular universal application (Browser Portion)
+*  3.- Progressive applications (Angular Mobile, Ionic, WebViews, etc)
 **/
 @NgModule({
   imports:      [ CommonModule, HttpModule ],
@@ -90,10 +95,13 @@ import { OrderSubscriptionApi } from './services/custom/OrderSubscription';
     SocketConnection
   ]
 })
-export class SDKNativeModule {
-  static forRoot(): ModuleWithProviders {
+export class SDKBrowserModule {
+  static forRoot(internalStorageProvider: any = {
+    provide: InternalStorage,
+    useClass: CookieBrowser
+  }): ModuleWithProviders {
     return {
-      ngModule  : SDKNativeModule,
+      ngModule  : SDKBrowserModule,
       providers : [
         LoopBackAuth,
         LoggerService,
@@ -129,9 +137,9 @@ export class SDKNativeModule {
         SubscriptionPackageLevelApi,
         SubscriptionServiceApi,
         OrderSubscriptionApi,
-        { provide: InternalStorage, useClass: StorageNative },
-        { provide: SDKStorage, useClass: StorageNative },
-        { provide: SocketDriver, useClass: SocketNative }
+        internalStorageProvider,
+        { provide: SDKStorage, useClass: StorageBrowser },
+        { provide: SocketDriver, useClass: SocketBrowser }
       ]
     };
   }
@@ -143,3 +151,6 @@ export class SDKNativeModule {
 export * from './models/index';
 export * from './services/index';
 export * from './lb.config';
+export * from './storage/storage.swaps';
+export { CookieBrowser } from './storage/cookie.browser';
+export { StorageBrowser } from './storage/storage.browser';

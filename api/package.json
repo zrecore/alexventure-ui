@@ -6,7 +6,7 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint && nsp check",
-    "build:sdk": "./node_modules/.bin/lb-sdk server/server.js app/shared/sdk -d ng2native -i enabled"
+    "build:sdk": "./node_modules/.bin/lb-sdk server/server.js app/shared/sdk"
   },
   "dependencies": {
     "compression": "^1.0.3",
